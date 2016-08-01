@@ -16,7 +16,14 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate () {
 	    if (Input.GetButtonDown("Jump"))
         {
-            rigidBody.velocity = new Vector3(0, jumpHeight, 0);
+            if (Managers.Game.State == GameManager.GameState.Paused)
+            {
+                Managers.Game.State = GameManager.GameState.Started;
+            }
+            else
+            {
+                rigidBody.velocity = new Vector3(0, jumpHeight, 0);
+            }
         }
 	}
 }
