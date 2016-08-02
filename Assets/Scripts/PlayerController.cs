@@ -26,4 +26,12 @@ public class PlayerController : MonoBehaviour {
             }
         }
 	}
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Obstacle")
+        {
+            Messenger.Broadcast(GameEvent.PlayerHitSomething);
+        }
+    }
 }
